@@ -174,14 +174,14 @@ int main (int argc, char* argv[]) {
    	pthread_create(&threadsum[i], &attr, sum, (void *) &parameters[i]);  
   }
 
-  pthread_attr_destroy(&attr);
-
+  
   for(int i=0; i<nbthreads; i++){
   pthread_join(threadsum[i], NULL);
   }
 
   pthread_mutex_destroy(&mutexsum);
   pthread_mutex_destroy(&nxt_val);
+  pthread_attr_destroy(&attr);
 
   std::cout<< totalsum << std::endl;
 
